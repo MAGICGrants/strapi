@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "perk": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::perk.perk"
+    },
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "userEmail": {
+      "type": "email",
+      "required": true
+    },
+    "shippingAddressLine1": {
+      "type": "string",
+      "required": false
+    },
+    "shippingAddressLine2": {
+      "type": "string"
+    },
+    "shippingCity": {
+      "type": "string"
+    },
+    "shippingState": {
+      "type": "string"
+    },
+    "shippingCountry": {
+      "type": "string"
+    },
+    "shippingZip": {
+      "type": "string"
+    },
+    "shippingPhone": {
+      "type": "string"
+    }
+  }
+}

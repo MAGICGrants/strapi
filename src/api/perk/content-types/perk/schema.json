@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "perks",
+  "info": {
+    "singularName": "perk",
+    "pluralName": "perks",
+    "displayName": "Perk",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "integer",
+      "required": true
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "fundSlugWhitelist": {
+      "type": "string",
+      "required": false,
+      "regex": "^(monero|firo|privacyguides|general)(,(monero|firo|privacyguides|general))*$"
+    },
+    "needsShippingAddress": {
+      "type": "boolean",
+      "required": false,
+      "default": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "points",
+  "info": {
+    "singularName": "point",
+    "pluralName": "points",
+    "displayName": "Point",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "balanceChange": {
+      "type": "biginteger",
+      "required": true
+    },
+    "balance": {
+      "type": "biginteger",
+      "required": true
+    },
+    "perk": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::perk.perk"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order.order"
+    },
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "donationId": {
+      "type": "string",
+      "required": false
+    },
+    "donationProjectSlug": {
+      "type": "string"
+    },
+    "donationProjectName": {
+      "type": "string"
+    },
+    "donationFundSlug": {
+      "type": "string"
+    }
+  }
+}
