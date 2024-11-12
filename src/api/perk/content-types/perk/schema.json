@@ -42,6 +42,9 @@
     "description": {
       "type": "text",
       "required": true
+    },
+    "printfulProductId": {
+      "type": "biginteger"
     }
   }
 }
