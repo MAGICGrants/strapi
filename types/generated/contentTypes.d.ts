@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
   collectionName: 'orders';
   info: {
+    description: '';
     displayName: 'Order';
     pluralName: 'orders';
     singularName: 'order';
@@ -387,6 +388,10 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'> &
       Schema.Attribute.Private;
     perk: Schema.Attribute.Relation<'oneToOne', 'api::perk.perk'>;
+    printfulOrderId: Schema.Attribute.BigInteger & Schema.Attribute.Unique;
+    printfulTrackingNumber: Schema.Attribute.String;
+    printfulTrackingService: Schema.Attribute.String;
+    printfulTrackingUrl: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     shippingAddressLine1: Schema.Attribute.String;
     shippingAddressLine2: Schema.Attribute.String;

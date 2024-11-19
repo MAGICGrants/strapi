@@ -4,7 +4,8 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "Order"
+    "displayName": "Order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -44,6 +45,19 @@
       "type": "string"
     },
     "shippingPhone": {
+      "type": "string"
+    },
+    "printfulOrderId": {
+      "type": "biginteger",
+      "unique": true
+    },
+    "printfulTrackingService": {
+      "type": "string"
+    },
+    "printfulTrackingUrl": {
+      "type": "string"
+    },
+    "printfulTrackingNumber": {
       "type": "string"
     }
   }
