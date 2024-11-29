@@ -60,7 +60,7 @@ services:
     environment:
       POSTGRES_USER: strapi
       POSTGRES_DB: strapi
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     volumes:
       - "strapi_postgres_data:/var/lib/postgresql/data"
 
