@@ -65,4 +65,4 @@ services:
       - "strapi_postgres_data:/var/lib/postgresql/data"
 
 volumes:
-  postgres_data:
+  strapi_postgres_data:
