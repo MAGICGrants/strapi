@@ -4,17 +4,14 @@ export default ({ env }) => ({
     config: {
       provider: "aws-s3",
       providerOptions: {
-        baseUrl: env("CDN_URL"),
-        rootPath: env("CDN_ROOT_PATH"),
-        s3Options: {
-          accessKeyId: env("AWS_ACCESS_KEY_ID"),
-          secretAccessKey: env("AWS_ACCESS_SECRET"),
-          region: env("AWS_REGION"),
-          params: {
-            ACL: env("AWS_ACL", "private"),
-            signedUrlExpires: env("AWS_SIGNED_URL_EXPIRES", 15 * 60),
-            Bucket: env("AWS_BUCKET"),
-          },
+        credentials: {
+          accessKeyId: env("HETZNER_BUCKET_ACCESS_KEY_ID"),
+          secretAccessKey: env("HETZNER_BUCKET_ACCESS_SECRET"),
+        },
+        region: env("HETZNER_BUCKET_REGION"),
+        endpoint: env("HETZNER_BUCKET_ENDPOINT"),
+        params: {
+          Bucket: env("HETZNER_BUCKET_NAME"),
         },
       },
       actionOptions: {
