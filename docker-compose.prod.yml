@@ -25,6 +25,8 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
+    ports:
+      - 1337:1337
     environment:
       NODE_ENV: production
       DATABASE_CLIENT: postgres
