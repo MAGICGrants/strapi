@@ -45,6 +45,9 @@
     },
     "printfulProductId": {
       "type": "biginteger"
+    },
+    "productDetailsUrl": {
+      "type": "string"
     }
   }
 }

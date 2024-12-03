@@ -435,6 +435,7 @@ export interface ApiPerkPerk extends Struct.CollectionTypeSchema {
       Schema.Attribute.DefaultTo<true>;
     price: Schema.Attribute.Integer & Schema.Attribute.Required;
     printfulProductId: Schema.Attribute.BigInteger;
+    productDetailsUrl: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
