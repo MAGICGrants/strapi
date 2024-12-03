@@ -54,6 +54,8 @@ services:
       - ./public/uploads:/opt/app/public/uploads
     depends_on:
       - postgres
+    networks:
+      - strapi-shared-network
 
   postgres:
     container_name: strapi-postgres
@@ -68,3 +70,7 @@ services:
 
 volumes:
   strapi_postgres_data:
+
+networks:
+  strapi-shared-network:
+    external: true
