@@ -7,6 +7,8 @@ services:
     environment:
       TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
       REAL_IP_HEADER: Cf-Connecting-Ip
+    networks:
+      - internal
     depends_on:
       - nginx
 
@@ -16,6 +18,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - internal
     depends_on:
       - strapi
 
@@ -52,10 +56,11 @@ services:
       - ./package.json:/opt/package.json
       - ./package-lock.json:/opt/package-lock.json
       - ./public/uploads:/opt/app/public/uploads
+    networks:
+      - internal
+      - strapi-shared-network
     depends_on:
       - postgres
-    networks:
-      - strapi-shared-network
 
   postgres:
     container_name: strapi-postgres
@@ -72,5 +77,7 @@ volumes:
   strapi_postgres_data:
 
 networks:
+  internal:
+    driver: bridge
   strapi-shared-network:
     external: true
