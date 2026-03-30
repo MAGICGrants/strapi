@@ -1,0 +1,42 @@
+services:
+  strapi:
+    image: node:24-alpine3.22
+    container_name: strapi
+    restart: unless-stopped
+    ports:
+      - 1337:1337
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    environment:
+      NODE_ENV: development
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: strapi-postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-strapi}
+      APP_KEYS: ${APP_KEYS}
+      JWT_SECRET: ${JWT_SECRET}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+    working_dir: /app
+    command: npm run develop
+    volumes:
+      - .:/app
+    depends_on:
+      - strapi-postgres
+
+  strapi-postgres:
+    container_name: strapi-postgres
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: strapi
+      POSTGRES_DB: strapi
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-strapi}
+    volumes:
+      - "magic_strapi_postgres_data:/var/lib/postgresql/data"
+
+volumes:
+  magic_strapi_postgres_data:
