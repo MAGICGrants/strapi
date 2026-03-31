@@ -3,12 +3,12 @@ name: Deploy app to staging.strapi.magicgrants.org
 on:
   push:
     branches:
-      - main
+      - staging
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: main
+    environment: staging
 
     steps:
       - uses: actions/checkout@v4
