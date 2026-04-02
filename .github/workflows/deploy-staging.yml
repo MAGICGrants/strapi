@@ -1,14 +1,14 @@
-name: Deploy app to strapi.magicgrants.org
+name: Deploy app to staging.strapi.magicgrants.org
 
 on:
   push:
     branches:
-      - main
+      - staging
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: main
+    environment: staging
 
     steps:
       - uses: actions/checkout@v4
@@ -37,6 +37,7 @@ jobs:
             HETZNER_BUCKET_ENDPOINT=${{ secrets.HETZNER_BUCKET_ENDPOINT }} \
             HETZNER_BUCKET_HOST=${{ secrets.HETZNER_BUCKET_HOST }} \
             CLOUDFLARE_TUNNEL_TOKEN=${{ secrets.CLOUDFLARE_TUNNEL_TOKEN }} \
-            NGINX_SERVER_NAME=strapi.magicgrants.org \
+            DOCKER_NETWORK_NAME=${{ vars.DOCKER_NETWORK_NAME }} \
+            NGINX_SERVER_NAME=${{ vars.NGINX_SERVER_NAME }} \
             docker compose -f docker-compose.prod.yml up -d --build
           EOF
