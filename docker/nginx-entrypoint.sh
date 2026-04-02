@@ -1,5 +1,6 @@
 #!/bin/sh
 set -eux
-envsubst '${NGINX_SERVER_NAME}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
+: "${NGINX_SERVER_NAME:=localhost}"
+sed "s#\${NGINX_SERVER_NAME}#${NGINX_SERVER_NAME}#g" /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
 nginx -t
 exec nginx -g 'daemon off;'
