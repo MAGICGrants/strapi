@@ -13,15 +13,16 @@ services:
       - strapi-nginx
 
   strapi-nginx:
-    image: nginx:1
+    # Debian Trixie image includes gettext (`envsubst`). Avoid slim tags without envsubst.
+    image: nginx:stable-trixie
     container_name: strapi-nginx
     restart: unless-stopped
     environment:
       NGINX_SERVER_NAME: ${NGINX_SERVER_NAME:-strapi.magicgrants.org}
     volumes:
       - ./nginx.conf.template:/etc/nginx/nginx.conf.template:ro
-    entrypoint: ["/bin/sh", "-c"]
-    command: "envsubst '$${NGINX_SERVER_NAME}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"
+      - ./docker/nginx-entrypoint.sh:/scripts/nginx-entrypoint.sh:ro
+    entrypoint: ["/bin/sh", "/scripts/nginx-entrypoint.sh"]
     networks:
       - app
     depends_on:
