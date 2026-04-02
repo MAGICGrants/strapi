@@ -20,6 +20,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} << 'EOF'
             export HISTFILE=/dev/null
             cd strapi
+            git checkout staging
             echo "Pulling changes..."
             git pull
             echo "Building and starting..."
