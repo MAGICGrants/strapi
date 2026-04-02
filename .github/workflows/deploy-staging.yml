@@ -37,7 +37,7 @@ jobs:
             HETZNER_BUCKET_ENDPOINT=${{ secrets.HETZNER_BUCKET_ENDPOINT }} \
             HETZNER_BUCKET_HOST=${{ secrets.HETZNER_BUCKET_HOST }} \
             CLOUDFLARE_TUNNEL_TOKEN=${{ secrets.CLOUDFLARE_TUNNEL_TOKEN }} \
-            DOCKER_NETWORK_NAME=magic-staging-network \
-            NGINX_SERVER_NAME=staging.strapi.magicgrants.org \
+            DOCKER_NETWORK_NAME=${{ vars.DOCKER_NETWORK_NAME }} \
+            NGINX_SERVER_NAME=${{ vars.NGINX_SERVER_NAME }} \
             docker compose -f docker-compose.prod.yml up -d --build
           EOF
